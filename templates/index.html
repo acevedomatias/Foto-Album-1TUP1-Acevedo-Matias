@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/512/4440/4440797.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Álbum de Fotos</title>
+</head>
+<body>
+    <h1>Álbum de Fotos - Ejercicio Evaluatorio Python</h1>
+    <h3>Matias Acevedo - 54268 - 1TUP1</h3>
+    <a class="editarfoto" href="{{ url_for('main.add') }}">Añadir Nueva Foto</a>
+    <ul>
+        {% for photo in photos %}
+            <li>
+                <h2>{{ photo.title }}</h2>
+                <p>{{ photo.description }}</p>
+                <img src="{{ photo.image }}" alt="{{ photo.title }}">
+                <a class="editar" href="{{ url_for('main.update', id=photo.id) }}">Editar</a>
+                <a class="eliminar" href="{{ url_for('main.delete', id=photo.id) }}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

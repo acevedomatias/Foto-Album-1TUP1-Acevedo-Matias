@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="https://cdn-icons-png.freepik.com/512/4440/4440797.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Añadir Foto</title>
+</head>
+<body>
+    <h1>Añadir Foto</h1>
+    <form method="POST">
+        <label for="title">Título:</label>
+        <input type="text" id="title" name="title" value="{{ photo.title if photo else '' }}" required><br>
+        <label for="description">Descripción:</label>
+        <textarea id="description" name="description">{{ photo.description if photo else '' }}</textarea><br>
+        <label for="image">Imagen [LINK]:</label>
+        <input type="text" id="image" name="image" value="{{ photo.image if photo else '' }}" required><br>
+        <input type="submit" value="Añadir" if not photo else "Actualizar">
+    </form>
+</body>
+</html>
